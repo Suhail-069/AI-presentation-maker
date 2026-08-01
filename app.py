@@ -133,7 +133,7 @@ if (user_input):
             Strict HTML Output, No Any markdowns Response
             User Query: """ + user_input
 
-            response = leader_agent.invoke({'messages': [{'role': 'user','content': prompt}]})
+           response = leader_agent.invoke({'messages': [{'role': 'user','content': prompt}]})
 
             code = response['messages'][-1].content[-1]['text']
             st.html(code, width="stretch", unsafe_allow_javascript=True)
@@ -142,14 +142,14 @@ if (user_input):
                 st.error("Error Code: ", err)
 
 
-with tab3:
-      if st.button("Click To Generate PPT", key = "PPT-Button"):
-        with st.spinner ("Running Agent"):
-          try:
-            code = run_agent(leader_agent, user_input)
-            st.html(code, width="stretch", unsafe_allow_javascript=True)
-            
-            if st.download_button(label= "DOWNLOAD PPT", data= code, file_name= 'ppt.html', mime= 'text/html'):
-              st. success("PPT DOWNLOADED SUCCESSFULLY!!!")
-          except Exception as err:
-            st.error("Error Code:", err)
+  with tab3:
+        if st.button("Click To Generate PPT", key = "PPT-Button"):
+          with st.spinner ("Running Agent"):
+            try:
+              code = run_agent(leader_agent, user_input)
+              st.html(code, width="stretch", unsafe_allow_javascript=True)
+              
+              if st.download_button(label= "DOWNLOAD PPT", data= code, file_name= 'ppt.html', mime= 'text/html'):
+                st. success("PPT DOWNLOADED SUCCESSFULLY!!!")
+            except Exception as err:
+              st.error("Error Code:", err)
