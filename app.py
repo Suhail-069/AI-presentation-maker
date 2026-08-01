@@ -13,6 +13,8 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
+st.set_page_config(layout = "wide")
+
 
 #=========== STEP 2 load ENV and API-KEYS==============================
 st.title("Agentic PPT Generator")
@@ -104,7 +106,7 @@ if all(ALL_API):
       model = model,
       tools = [search_latest_info]
   )
-  leader_agent
+#  leader_agent
 else:
   st.info("GIVE ALL API-KEYS FIRST TO LOAD AGENT")
 
@@ -113,9 +115,9 @@ else:
 tab1,tab2,tab3 = st.tabs(["Generate Image", "Fetch News", "Generate PPT"])
 user_input = st.text_area("Write Prompt & Click Enter")
 
-if (user_input) & (leader_agent):
-  with tab:
-    if st.button("Click to Generate Image"):
+if (user_input):
+  with tab1:
+    if st.button("Click to Generate Image", key = "Image-Button"):
       with st.spinner("Running Agent"):
         try:
           url = generate_image(user_input)
