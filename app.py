@@ -135,8 +135,8 @@ if (user_input):
 
            response = leader_agent.invoke({'messages': [{'role': 'user','content': prompt}]})
 
-            code = response['messages'][-1].content[-1]['text']
-            st.html(code, width="stretch", unsafe_allow_javascript=True)
+           code = response['messages'][-1].content[-1]['text']
+           st.html(code, width="stretch", unsafe_allow_javascript=True)
 
         except Exception as err:
                 st.error("Error Code: ", err)
